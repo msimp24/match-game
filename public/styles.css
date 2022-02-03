@@ -1,0 +1,60 @@
+.game-container{
+    display: flex;
+    flex-wrap: wrap;
+    height:500px;
+    width:1000px;
+}
+img{
+    position:absolute;
+    object-fit: cover;
+}
+.easy-size{
+    width: 155px;
+    height:210px;
+}
+.med-size{
+    width:110px;
+    height: 160px;
+
+}
+.hard-size{
+
+}
+
+.card-easy{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background-color: white;
+    width: 155px;
+    height:230px;
+    margin-top:10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: solid gray 1px;
+}
+.card-easy:hover{
+    cursor:pointer;
+}
+.card-med{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background: white;
+    width:110px;
+    height:160px;
+    border-radius: 5px;
+    margin-right: 10px;
+    border: solid gray 1px;
+}
+.card-hard{
+
+}
+.number-font{
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 60px;
+}
+    
+
