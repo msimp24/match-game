@@ -15,10 +15,10 @@ img{
 .med-size{
     width:110px;
     height: 160px;
-
 }
 .hard-size{
-
+    width:90px;
+    height:140px;
 }
 
 .card-easy{
@@ -47,8 +47,19 @@ img{
     margin-right: 10px;
     border: solid gray 1px;
 }
+.card-med:hover{
+    cursor:pointer;
+}
 .card-hard{
-
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background: white;
+    width:90px;
+    height:140px;
+    border-radius: 5px;
+    margin-right: 5px;
+    border: solid gray 1px;
 }
 .number-font{
     color: red;
@@ -56,5 +67,10 @@ img{
     font-style: italic;
     font-size: 60px;
 }
+.popup-header{
+    opacity: 2s;
+    transition: opacity 2s;
+}
+
     
 
