@@ -4,39 +4,65 @@ const medium = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10]
 const hard = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,
              12,12,13,13,14,14,15,15];
 
+const headers = ["Name", "Number of Picks", 'Date', 'ID'];
+
 var flag = 0;
 var matchCounter = 0;
+var numOfPicks = 0;
 var gameEnder;
+var highscoreName;
 
 const img_url = "card-hidden.png"
 const gameContainer = document.querySelector('.game-container');
-const popupHeader = document.querySelector(".popup-header");
+const optionsContainer = document.querySelector(".options-container")
+var pickHeader = document.querySelector("#picks");
+const highScoresCont = document.querySelector(".highscore-container");
 
 const easyButton = document.querySelector("#option1");
 const medButton = document.querySelector("#option2");
 const hardButton = document.querySelector("#option3");
+
+const submitBtn = document.querySelector("#submit");
+const newGameBtn = document.querySelector("#new-game");
+const nameTextField = document.querySelector("#highscore-name");
+
+
 
 var firstChoice;
 var secondChoice;
 
 easyButton.addEventListener('click', () =>{
   gameContainer.innerHTML = "";
-  popupHeader.innerHTML = "";
+
+  optionsContainer.style.visibility = 'hidden'
   createEasyGame();
 });
 medButton.addEventListener('click', () =>{
   gameContainer.innerHTML = "";
-  popupHeader.innerHTML = "";
+
+  optionsContainer.style.visibility = 'hidden'
   createMediumGame();
 });
 hardButton.addEventListener('click', () =>{
   gameContainer.innerHTML = "";
-  popupHeader.innerHTML = "";
+  optionsContainer.style.visibility = 'hidden'
   createHardGame();
 });
 
+newGameBtn.addEventListener('click', ()=>{
+    location.reload();
+});
+
+submitBtn.addEventListener('click', async()=>{
+      postHighScore();
+      window.location.href ='highscore.html';
+})
+
+
+
 function createEasyGame(){
   var shuffledArr = shuffle(easy);
+  matchCounter =0;
   gameEnder = 6;
     for(let i=0; i<shuffledArr.length; i++){
       const cardDiv = document.createElement('div');
@@ -54,6 +80,7 @@ function createEasyGame(){
 }
 function createMediumGame(){
   var shuffledArr = shuffle(medium);
+  matchCounter = 0;
   gameEnder = 10;
 
     for(let i=0; i<shuffledArr.length; i++){
@@ -73,6 +100,7 @@ function createMediumGame(){
 }
 function createHardGame(){
   var shuffledArr = shuffle(hard);
+  matchCounter = 0;
   gameEnder = 15;
 
     for(let i=0; i<shuffledArr.length; i++){
@@ -125,22 +153,25 @@ function shuffle(array) {
         secondImg = secondChoice.querySelector('img');
         secondImg.style.visibility = "hidden";
         flag = 0;
+        numOfPicks++;
+
 
         if(isMatch(firstChoice.id, secondChoice.id)){
-          console.log(gameEnder);
 
           matchCounter++;
           console.log(matchCounter);
           firstChoice.removeEventListener('click', makeSelection)
           secondChoice.removeEventListener('click', makeSelection)
 
-          if(matchCounter == gameEnder){
-            popupHeader.textContent = "Congratulations, you win";
+          if(gameEnder == matchCounter){
+            pickHeader.innerHTML = "You won in " + numOfPicks + " tries!";
+            gameContainer.append(highScoresCont);
+
           }
         }
         else{
           setTimeout(function(){
-          hideCards(firstChoice, secondChoice)}, 1000)
+          hideCards(firstChoice, secondChoice)}, 500)
         }
         
 
@@ -163,6 +194,19 @@ function shuffle(array) {
       img2.style.visibility = "visible";
     }
 
-    function checkGameCompletion(){
-
+    async function postHighScore(){
+      highscoreName = nameTextField.value;
+      const data = {highscoreName, numOfPicks};
+      const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      };
+      const response = await fetch('/api', options);
+      const json = await response.json();
+    
     }
+
+    

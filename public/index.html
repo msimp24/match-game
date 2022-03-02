@@ -14,27 +14,30 @@
 
 
 
-
         <div class="game-container">
+            <div class="highscore-container">
+                <h2 id="picks"></h2>
+                <h4>Enter your name for a highscore:</h4>
+                <input class="form-control" type="text" placeholder="Name" id="highscore-name">
+                <button type="button" class="btn btn-dark" id="submit">SUBMIT</button>
+                <button type="button" class="btn btn-dark" id="new-game">NEW GAME</button>
+            </div>
+
+            <div class="options-container">
+                <h1>MATCH GAME</h1>
+                <img src="card-hidden.png" class="med-size"/>
+               
+                <div class="button-container">
+                   <button type="button" class="btn btn-dark" id="option1">EASY</button>
+                   <button type="button" class="btn btn-dark" id="option2">MEDIUM</button>
+                   <button type="button" class="btn btn-dark" id="option3">HARD</button>
+                </div>
+           </div>
 
         </div>
         
-        <h1 class="popup-header"></h1>
 
-        <div class="options-container">
 
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option1" autocomplete="off" > Easy
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option2" autocomplete="off"> Medium
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option3" autocomplete="off"> Hard
-            </label>
-            </div>
-            
-        </div>
+
 </body>
 </html>

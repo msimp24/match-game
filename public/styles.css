@@ -1,8 +1,11 @@
+
 .game-container{
+    margin:auto;
+    max-width: 1000px;
+    min-width: 700px;
     display: flex;
     flex-wrap: wrap;
-    height:500px;
-    width:1000px;
+
 }
 img{
     position:absolute;
@@ -61,6 +64,9 @@ img{
     margin-right: 5px;
     border: solid gray 1px;
 }
+.card-hard:hover{
+    cursor: pointer;
+}
 .number-font{
     color: red;
     font-weight: bold;
@@ -71,6 +77,79 @@ img{
     opacity: 2s;
     transition: opacity 2s;
 }
+.options-container{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width:300px;
+    height:500px;
+    border-radius: 10px;
+    background-color: lightcoral;
+    margin-left: 30%;
+}
 
-    
+h1{
+    color:white;
+    font-size: 80px;
 
+}
+.button{
+    margin-top: 5px;
+}
+.button-container{
+    display: flex;
+    justify-content: space-around;
+    height:40px;
+    width:250px;
+}
+.highscore-container{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:300px;
+    height:500px;
+    border-radius: 10px;
+    background-color: lightcoral;
+    margin-left: 30%;
+    }
+
+
+#picks{
+    color: white;
+    margin-bottom: 50px;
+}
+h4{
+    color:white;
+}
+#submit{
+    margin-top: 20px;
+}
+
+#submit, #new-game {
+    margin-bottom:5px;
+}
+.highscores{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:300px;
+    height:500px;
+    border-radius: 10px;
+    background-color: lightcoral;
+    margin-left: 30%;
+    color: white;
+    }
+    #new-game2{
+        position: fixed;
+        top: 450px;
+    }
+    #highscore-header{
+        position: fixed;
+        top: 0;
+    }
